@@ -1,0 +1,32 @@
+﻿@using EmaPosAdminProject.Customs
+@using EmaPosAdminProject.Models.Entity
+@model news
+@{
+    ViewBag.Title = "HaberGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@Model.title Haberini Düzenleme</h6>
+        <a class="btn btn-primary" href="/Haberler/HaberlerListesi">< Geri Dön</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            @using (Html.BeginForm("HaberGuncelle", "Haberler", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.TextBoxFor(x => x.id, new { @class = "form-control", @readonly = "readonly", type = "hidden" })
+                <p class="text-dark">Haber Adı</p>
+                @Html.TextBoxFor(x => x.title, new { @class = "form-control", required = "true" })
+                <br />
+                <p class="text-dark">Haber Detayı</p>
+                @Html.TextAreaFor(x => x.text, 5, 1, new { @class = "form-control" })
+                <br />
+                @Html.Submit("Güncelle", new { @class = "btn btn-success" })
+                <a class="btn btn-primary" href="/Haberler/HaberlerListesi">< Geri Dön</a>
+            }
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,52 @@
+﻿@using EmaPosAdminProject.Customs
+@using EmaPosAdminProject.Models.Entity
+@model contact
+@{
+    ViewBag.Title = "IletisimGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">İletişim Bilgilerini Düzenleme</h6>
+        <a class="btn btn-primary" href="/Iletisim/IletisimListe">< Geri Dön</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            @using (Html.BeginForm("IletisimGuncelle", "Iletisim", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+
+                @Html.TextBoxFor(x => x.id, new { @class = "form-control", @readonly = "readonly", type = "hidden" })
+                <p class="text-dark">Google Konum linki</p>
+                @Html.TextBoxFor(x => x.googleMap, new { @class = "form-control" })
+                <br />
+                <p class="text-dark">Adres</p>
+                @Html.TextBoxFor(x => x.address, new { @class = "form-control" })
+                <br />
+                <p class="text-dark">Telefon 1</p>
+                @Html.TextBoxFor(x => x.phone1, new { @class = "form-control", type = "number" })
+                <br />
+                <p class="text-dark">Telefon 2</p>
+                @Html.TextBoxFor(x => x.phone2, new { @class = "form-control", type = "number" })
+                <br />
+                <p class="text-dark">WhatsApp Numarası</p>
+                @Html.TextBoxFor(x => x.whatsappNumber, new { @class = "form-control", type = "number" })
+                <br />
+                <p class="text-dark">Email</p>
+                @Html.TextBoxFor(x => x.email, new { @class = "form-control", type = "email" })
+                <br />
+                <p class="text-dark">Facebook linki</p>
+                @Html.TextBoxFor(x => x.facebook, new { @class = "form-control" })
+                <br />
+                <p class="text-dark">Instagram linki</p>
+                @Html.TextBoxFor(x => x.instagram, new { @class = "form-control"})
+                <br />
+                @Html.Submit("Güncelle", new { @class = "btn btn-success" })
+                <a class="btn btn-primary" href="/Iletisim/IletisimListe">< Geri Dön</a>
+
+            }
+
+        </div>
+    </div>
+</div>
+

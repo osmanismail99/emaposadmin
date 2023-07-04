@@ -1,0 +1,132 @@
+﻿@model EmaPosAdminProject.ViewModel.NewsImages
+@{
+    ViewBag.Title = "NewsDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!-- Header Start -->
+<div class="container-fluid page-header" style="height: 250px;">
+    <div class="container" style="height: 250px;">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 250px;">
+            <h3 class="display-4 text-white text-uppercase">HABER DETAYI</h3>
+            <div class="d-inline-flex text-white">
+                <p class="m-0 text-uppercase"><a class="text-white" href="/Home/Index">Ana Sayfa</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase"><a class="text-white" href="/Home/News">Haberler</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase">@Model.News.title</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<!-- Detail Start-->
+<div class="container-fluid py-5">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="bg-white mb-3" style="padding: 30px;">
+                    <div id="header-carousel" class="carousel slide mb-3 py-5" data-ride="carousel">
+                        <div class="carousel-inner">
+                            @foreach (var x in Model.NewsImageList)
+                            {
+                                <div class="carousel-item @(x == Model.NewsImageList.First() ? "active" : "")">
+                                    <img class="w-100" src="~/Images/News/@x.image" alt="Image" style="height:400px;">
+                                </div>
+                            }
+                        </div>
+                        <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+                            <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                                <span class="carousel-control-prev-icon mb-n2"></span>
+                            </div>
+                        </a>
+                        <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+                            <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                                <span class="carousel-control-next-icon mb-n2"></span>
+                            </div>
+                        </a>
+                    </div>
+                    @*<img class="img-fluid w-50 float-left mr-4 mb-2" src="~/image/HABER1.jpg">*@
+                    <div class="d-flex mb-3">
+                        <a class="text-primary text-uppercase text-decoration-none" href="">@Model.News.title</a>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <a class="text-primary text-uppercase text-decoration-none" href="">@Model.News.date.Value.ToString("dd.MM.yyyy")</a>
+                    </div>
+                    <p>
+                        @Model.News.text
+                    </p>
+                </div>
+
+
+
+            </div>
+            <div class="col-lg-4 mt-5 mt-lg-0">
+
+                <!-- Search Form -->
+                <!-- Category List -->
+                <div class="mb-5">
+                    <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">ÜRÜN KATEGORİLERİ</h4>
+                    <div class="bg-white" style="padding: 30px;">
+                        <ul class="list-inline m-0">
+                            @foreach (var x in Model.CategoryList)
+                            {
+                                <li class="mb-3 d-flex justify-content-between align-items-center">
+                                    <a class="text-dark" href="/Home/Products/@x.id">
+                                        <i class="fa fa-angle-right text-primary mr-2"></i>@x.name
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact Start -->
+<div class="container-fluid " style="padding-bottom:40px;">
+    <div class="container ">
+        <div class="text-center mb-3 pb-3">
+            <h3 class="text-primary text-uppercase" style="letter-spacing: 5px;">TEKLİF AL!</h3>
+            <h1></h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="contact-form bg-white" style="padding: 30px;">
+                    <div id="success"></div>
+                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="name" placeholder="Ad Soyad"
+                                   required="required" data-validation-required-message="Please enter your name" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="email" class="form-control p-4" id="email" placeholder="E-Mail"
+                                   required="required" data-validation-required-message="Please enter your email" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="subject" placeholder="Telefon"
+                                   required="required" data-validation-required-message="Please enter a subject" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <textarea class="form-control py-3 px-4" rows="5" id="message" placeholder="Mesaj"
+                                      required="required"
+                                      data-validation-required-message="Please enter your message"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-danger py-3 px-4" type="submit" id="sendMessageButton">Gönder</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->

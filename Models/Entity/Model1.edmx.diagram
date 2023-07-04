@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="292cce9b4b784a6b817caf9d34e99de0" Name="Diagram1">
+        <EntityTypeShape EntityType="EmaDbModel.about" Width="1.5" PointX="7.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.category" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.contact" Width="1.5" PointX="5.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.indexCarousel" Width="1.5" PointX="7.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.indexContactUs" Width="1.5" PointX="9.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.indexProducts" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.indexWhoAreWe" Width="1.5" PointX="2.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.mission" Width="1.5" PointX="9.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.news" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.newsImage" Width="1.5" PointX="8" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.product" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.productImage" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.proporties" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.reference" Width="1.5" PointX="10.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.sector" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.sectorsCategory" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.solutionPartners" Width="1.5" PointX="11.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.sysdiagrams" Width="1.5" PointX="11.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.user" Width="1.5" PointX="7.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmaDbModel.vision" Width="1.5" PointX="9.75" PointY="12.875" IsExpanded="true" />
+        <AssociationConnector Association="EmaDbModel.FK_product_category" ManuallyRouted="false" />
+        <AssociationConnector Association="EmaDbModel.FK_sectorsCategory_category" ManuallyRouted="false" />
+        <AssociationConnector Association="EmaDbModel.FK_newsImage_news" ManuallyRouted="false" />
+        <AssociationConnector Association="EmaDbModel.FK_productImage_product" ManuallyRouted="false" />
+        <AssociationConnector Association="EmaDbModel.FK_proporties_sector" ManuallyRouted="false" />
+        <AssociationConnector Association="EmaDbModel.FK_sectorsCategory_sector" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

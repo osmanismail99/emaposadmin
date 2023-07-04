@@ -1,0 +1,93 @@
+﻿@using EmaPosAdminProject.Customs
+@model EmaPosAdminProject.ViewModel.SectorCategories
+@{
+    ViewBag.Title = "KategoriListesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<head>
+    <!-- Custom styles for this page -->
+    <link href="~/web_admin/startbootstrap-sb-admin-2-gh-pages/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+</head>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+
+        <div class="card-header py-3">
+
+            @foreach (var x in Model.SectortList)
+            {
+                <h6 class="m-0 font-weight-bold text-primary">@x.title Sektörün Kategorileri</h6>
+                <br />
+            }
+            @Html.ActionLink("< Sektörler", "SektorlerListesi", "Sektorler", new { }, new { @class = "btn btn-primary py-1" })
+
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Kategori</th>
+                            <th>Sil</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Kategori</th>
+                            <th>Sil</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var x in Model.SectorsCategoryList)
+                        {
+                            <tr>
+                                <td>@x.category.name</td>
+                                <td>@Html.ActionLink("Sil", "KategoriSil", "Sektorler", new { x.id }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek istediğinizden emin misiniz?');" }) </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary"> Sektöre Kategori Ekleme</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                @using (Html.BeginForm("YeniKategori", "Sektorler", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <input type="number" class="form-control" name="sectorId" id="sectorId" value="@Model.Id" required min="1" readonly hidden/>
+                    @*@Html.TextBoxFor(x => Model.SectorsCategory.sectorId, new { @class = "form-control", name = "sectorId", id = "sectorId" })*@
+                    <p class="text-dark">Kategori</p>
+                    <select class="form-control" name="categoryId" id="categoryId" required>
+                        <option value="">Seç...</option>
+                        @foreach (var item in ViewBag.category)
+                        {
+                            <option value="@item.id">
+                                @item.name
+                            </option>
+                        }
+
+                    </select>
+                    <br />
+                    @Html.Submit("Ekle", new { @class = "btn btn-primary" })
+
+                }
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

@@ -1,0 +1,96 @@
+﻿@using EmaPosAdminProject.Customs
+@model EmaPosAdminProject.ViewModel.ProductImages
+@{
+    ViewBag.Title = "YeniUrun";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Yeni Ürün Ekleme</h6>
+        <a class="btn btn-primary" href="/Urun/UrunlerListesi">< Geri Dön</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            @using (Html.BeginForm("YeniUrun", "Urun", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <p class="text-dark">Ürün Adı</p>
+                @Html.TextBoxFor(x => Model.Product.title, new { @class = "form-control", required = "true" })
+                <br />
+                <p class="text-dark">Kategori</p>
+                <select class="form-control" name="id" required>
+                    <option value="">Seç...</option>
+                    @foreach (var item in ViewBag.category)
+                    {
+                        <option value="@item.id">
+                            @item.name
+                        </option>
+                    }
+                </select>
+                <br />
+                <p class="text-dark">Ürün Detayı</p>
+                @Html.TextAreaFor(x => Model.Product.text, 5, 1, new { @class = "form-control", id="summernote" })
+
+                @*@Html.DropDownListFor(x => Model.Product.categoryId,, new { @class = "form-control" })*@
+                @*<br />
+                <p class="text-dark">Görsel</p>
+                @Html.TextBoxFor(x => Model.ProductImage.image, new { @class = "form-control", type = "file", accept = ".jpg,.png,.gif,.JPEG,.jpeg", name = "image", required = "true", onchange = "previewMultiple(event)", id = "adicionafoto" })
+                <br />
+                <div id="galeria"></div>*@
+                <br />
+                @Html.Submit("Ekle", new { @class = "btn btn-success" })
+                <a class="btn btn-primary" href="/Urun/UrunlerListesi">< Geri Dön</a>
+
+            }
+
+        </div>
+    </div>
+</div>
+
+@*<script>
+    function previewMultiple(event) {
+        var saida = document.getElementById("adicionafoto");
+        var quantos = saida.files.length;
+        for (i = 0; i < quantos; i++) {
+            var urls = URL.createObjectURL(event.target.files[i]);
+            document.getElementById("galeria").innerHTML += '<img src="' + urls + '">';
+        }
+    }
+</script>
+<style>
+    #galeria {
+        display: flex;
+    }
+
+        #galeria img {
+            width: 85px;
+            height: 85px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+            opacity: 85%;
+        }
+</style>*@
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+</script>
+

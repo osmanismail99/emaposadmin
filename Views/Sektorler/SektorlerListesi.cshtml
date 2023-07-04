@@ -1,0 +1,77 @@
+﻿@model EmaPosAdminProject.ViewModel.SectorCategories
+@{
+    ViewBag.Title = "SektorlerListesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<head>
+    <!-- Custom styles for this page -->
+    <link href="~/web_admin/startbootstrap-sb-admin-2-gh-pages/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+</head>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Sektörler</h6>
+            <br />
+            @Html.ActionLink("Yeni Sektör Ekle +", "YeniSektor", "Sektorler", new { }, new { @class = "btn btn-primary py-1" })
+
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Sıra Numarası</th>
+                            <th>Sektör Adı</th>
+                            <th>Anasayfa Kısa Açıklama</th>
+                            <th>Detaylı Açıklama</th>
+                            <th>Görsel</th>
+                            <th>Kategoriler</th>
+                            <th>Sil</th>
+                            <th>Düzenle</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Sıra Numarası</th>
+                            <th>Sektör Adı</th>
+                            <th>Anasayfa Kısa Açıklama</th>
+                            <th>Açıklama</th>
+                            <th>Görsel</th>
+                            <th>Kategoriler</th>
+                            <th>Sil</th>
+                            <th>Düzenle</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var x in Model.SectortList)
+                        {
+                            <tr>
+                                <td>@x.orderNumber</td>
+                                <td>@x.title</td>
+                                <td>@x.shortText</td>
+                                <td>@x.text</td>
+                                <td><img width="75" src="~/Images/Sector/@x.image" /></td>
+                                <th>@Html.ActionLink("Kategoriler", "KategoriListesi", "Sektorler", new { x.id }, new { @class = "btn btn-primary" })</th>
+                                <td>@Html.ActionLink("Sil", "SektorSil", "Sektorler", new { x.id }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek istediğinizden emin misiniz?');" }) </td>
+                                <td>@Html.ActionLink("Düzenle", "SektorGetir", "Sektorler", new { x.id }, new { @class = "btn btn-warning" })</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

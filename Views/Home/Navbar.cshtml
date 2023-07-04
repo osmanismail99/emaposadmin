@@ -1,0 +1,84 @@
+﻿@model EmaPosAdminProject.ViewModel.Home.Navbar
+<!-- Topbar Start -->
+<div class="container-fluid bg-light pt-3 d-none d-lg-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center">
+                    <a href="mailto:@Model.Contact.email" class="text-danger">
+                        <p><i class="fa fa-envelope mr-2"></i>@Model.Contact.email</p>
+                    </a>
+                    <p class="text-body px-3">|</p>
+                    <a href="tel:@Model.Contact.phone1" class="text-danger">
+                        <p><i class="fa fa-phone-alt mr-2"></i>@Model.Contact.phone1</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-danger px-3" target="_blank" href="@Model.Contact.facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="text-danger px-3" target="_blank" href="https://www.google.com/maps/place/emapos+barkod+yaz%C4%B1l%C4%B1m+otomasyon+sistemleri/40.7646833,29.9294064,17z/data=!3m1!4b1!4m6!3m5!1s0x14cb45e5178e4dab:0xf55a2549ff624350!8m2!3d40.7646833!4d29.9294064!16s%2Fg%2F11hf418h96">
+                        <i class="fab fa-google-plus"></i>
+                    </a>
+                    <a class="text-danger px-3" target="_blank" href="@Model.Contact.instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+<!-- Navbar Start -->
+<div class="container-fluid position-relative nav-bar p-0">
+    <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+        <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+            <a href="" class="navbar-brand">
+                <img style="width:100px;height:80px;" href="/Home/Index" src="~/Images/newlogo.png" alt="#" />
+                <h1 class="m-0 text-primary"><span class="text-dark"></span></h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                <div class="navbar-nav ml-auto py-0">
+                    <a href="/Home/Index" class="nav-item nav-link">Anasayfa</a>
+                    <div class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Kurumsal</a>
+                        <div class="dropdown-menu border-0 rounded-0 m-0">
+                            <a href="/Home/About" class="dropdown-item">Hakkımızda</a>
+                            <a href="/Home/Mission" class="dropdown-item">Misyonumuz</a>
+                            <a href="/Home/Vission" class="dropdown-item">Vizyonumuz</a>
+                        </div>
+                    </div>
+                    @*<a href="about.html" class="nav-item nav-link">Sektörler</a>*@
+                    <a href="/Home/News" class="nav-item nav-link">Haberler</a>
+                    <a href="/Home/References" class="nav-item nav-link">Referanslar</a>
+                    <div class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Donanım</a>
+                        <div class="dropdown-menu border-0 rounded-0 m-0">
+                            @foreach (var x in Model.CategoryList)
+                            {
+                                <a href="/Home/Products/@x.id" class="dropdown-item">@x.name</a>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Yazılım</a>
+                        <div class="dropdown-menu border-0 rounded-0 m-0">
+                            @foreach (var x in Model.ProductList)
+                            {
+                                <a href="/Home/ProductDetail/@x.id" class="dropdown-item">@x.title</a>
+                            }
+                        </div>
+                    </div>
+                    <a href="/Home/Contact" class="nav-item nav-link">İletişim</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- Navbar End -->

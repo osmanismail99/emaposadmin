@@ -1,0 +1,38 @@
+﻿@using EmaPosAdminProject.Customs
+@using EmaPosAdminProject.Models.Entity
+@model user
+@{
+    ViewBag.Title = "YeniKullanici";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Yeni Kullanıcı Oluşturma</h6>
+        <a class="btn btn-primary" href="/Kullanici/KullanicilarListesi">< Geri Dön</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            @using (Html.BeginForm("YeniKullanici", "Kullanici", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <p class="text-dark">Kullanıcı Adı</p>
+                @Html.TextBoxFor(x=>x.username, new { @class = "form-control", required = "true"})
+                <br />
+                <p class="text-dark">E-Mail</p>
+                @Html.TextBoxFor(x => x.email, new { @class = "form-control", required = "true", type = "email" })
+                <br />
+                <p class="text-dark">Şifre</p>
+                @Html.PasswordFor(x => x.password, new { @class = "form-control", required = "true" })
+                <br />
+                @Html.Submit("Ekle", new { @class = "btn btn-success" })
+                <a class="btn btn-primary" href="/Kullanici/KullanicilarListesi">< Geri Dön</a>
+
+
+
+            }
+
+        </div>
+    </div>
+</div>
+
+

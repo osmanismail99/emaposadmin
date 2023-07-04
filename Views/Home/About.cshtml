@@ -1,0 +1,92 @@
+﻿@using EmaPosAdminProject.Models.Entity
+@model about
+@{
+    ViewBag.Title = "About";
+}
+
+<!-- Header Start -->
+<div class="container-fluid page-header" style="height: 250px;">
+    <div class="container" style="height: 250px;">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 250px;">
+            <h3 class="display-4 text-white text-uppercase">HAKKIMIZDA</h3>
+            <div class="d-inline-flex text-white">
+                <p class="m-0 text-uppercase"><a class="text-white" href="/Home/Index">Ana Sayfa</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase">HAKKIMIZDA</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<!-- Vison Start -->
+<div class="container-fluid py-1">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-lg-6 pt-5 pb-lg-5" style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <img class="w-100 h-100" src="~/Images/Kurumsal/@Model.image" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-6 ">
+                <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
+                    <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">HAKKIMIZDA</h6>
+                    <h1 class="mb-3"></h1>
+                    <p>
+                        @Model.text
+                    </p>
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            @*<img class="img-fluid" src="~/image/vizyon1.jpg" alt="">*@
+                        </div>
+                        <div class="col-6">
+                            @*<img class="img-fluid" src="~/image/vizyon1.jpg" alt="">*@
+                        </div>
+                    </div>
+                    <a href="/Home/Contact" class="btn btn-danger mt-1">Bizimle İletişime Geçin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Vis End -->
+<!-- Feature Start -->
+<!--<div class="container-fluid pb-5">
+    <div class="container pb-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="d-flex mb-4 mb-lg-0">
+                    <div class="d-flex bg-white service-item flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                        <i class="fa fa-2x fa-check mx-auto"></i>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5 class="">Dürüstlük</h5>
+                        <p class="m-0">Bizlere ulaşan müşterilerimiz ile daima iletişim halinde olur.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex  mb-4 mb-lg-0">
+                    <div class="d-flex bg-white service-item flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                        <i class="fa fa-2x fa-check mx-auto"></i>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5 class="">Müşteri Odaklılık</h5>
+                        <p class="m-0">Öncelikle kaliteli hizmeti baz alırken diğer yandan uygun fiyat garantisi ile.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex mb-4 mb-lg-0">
+                    <div class="d-flex bg-white service-item flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                        <i class="fa fa-2x fa-check mx-auto"></i>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5 class="">Yenilikçilik</h5>
+                        <p class="m-0">Siparişleriniz ile ilgilenen satış ekibimiz son teknolojik akımları takip etmekte.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+<!-- Feature End -->

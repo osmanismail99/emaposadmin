@@ -1,0 +1,75 @@
+﻿@using EmaPosAdminProject.Models.Entity
+@model List<indexProducts>
+@{
+    ViewBag.Title = "UrunlerListesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<head>
+    <!-- Custom styles for this page -->
+    <link href="~/web_admin/startbootstrap-sb-admin-2-gh-pages/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+</head>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Anasayfadaki Üst Kategoriler</h6>
+
+            @*@Html.ActionLink("Yeni Slayt", "YeniSlayt", "Admin", new { }, new { @class = "btn btn-primary py-1" })*@
+
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Kategori Adı</th>
+                            <th>Görsel</th>
+                            <th>Görünüm</th>
+                            <th>Düzenle</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Kategori Adı</th>
+                            <th>Görsel</th>
+                            <th>Görünüm</th>
+                            <th>Düzenle</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var x in Model)
+                        {
+                            <tr>
+                                <td>@x.title</td>
+                                <td><img width="75" src="~/Images/Category/@x.image" /></td>
+                                <td>
+                                    @if (x.visibility == true)
+                                    {
+                                        @Html.ActionLink("Gizle", "UrunDegis", "Anasayfa", new { x.id }, new { @class = "btn btn-warning", onclick = "return confirm('Web siteden kaldırmak istediğinizden emin misiniz?');" })
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink("Göster", "UrunDegis", "Anasayfa", new { x.id }, new { @class = "btn btn-success", onclick = "return confirm('Web sitede görüntülemek istediğinizden emin misiniz?');" })
+                                    }
+                                </td>
+                                <td>@Html.ActionLink("Düzenle", "UrunGetir", "Anasayfa", new { x.id }, new { @class = "btn btn-warning" })</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

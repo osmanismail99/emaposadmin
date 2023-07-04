@@ -1,0 +1,265 @@
+﻿@model EmaPosAdminProject.ViewModel.Home.Index
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<!-- Carousel Start -->
+<div class="container-fluid p-0">
+    <div id="header-carousel" class="carousel slide" data-ride="carousel">
+
+        <div class="carousel-inner">
+            @foreach (var x in Model.IndexCarouselList)
+            {
+                <div class="carousel-item @(x == Model.IndexCarouselList.First() ? "active" : "")">
+                    <img class="w-100" src="~/Images/Slider/@x.image" alt="Image">
+                    <div class=" d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h4 class="text-white text-uppercase mb-md-3"></h4>
+                            <h1 class="display-3 text-white mb-md-4"></h1>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <a class="carousel-control-prev" href="#header-carousel" data-slide="prev" to style="width:70px;">
+            <div class="btn btn-dark" to style="width: 45px; height: 45px;">
+                <span class="carousel-control-prev-icon mb-n2"></span>
+            </div>
+        </a>
+        <a class="carousel-control-next" href="#header-carousel" data-slide="next" to style="width:70px;">
+            <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                <span class="carousel-control-next-icon mb-n2"></span>
+            </div>
+        </a>
+    </div>
+</div>
+<!-- Carousel End -->
+<!-- Products Start -->
+@if (Model.indexProductList.Count > 1)
+{
+<div class="container-fluid py-5 ">
+    <div>
+        @*<div class="text-center mb-3 pb-3">
+                <h3 class="text-primary text-uppercase" style="letter-spacing: 5px;">ÜRÜNLER</h3>
+                <h1></h1>
+            </div>*@
+        <div class="row">
+            @foreach (var x in Model.indexProductList)
+            {
+
+                    <div class="col-lg-6 col-md-6 mb-4" style="border-radius:40px">
+                        <div class="destination-item position-relative overflow-hidden mb-2" style="border-radius:40px;">
+                            <img class="img-fluid" src="~/Images/Category/@x.image" alt="" style="border-radius:40px;">
+                            <div class="destination-overlay text-white text-decoration-none" href="" style="top:15px;bottom:15px;left:15px;right:15px; border-radius:40px;">
+                                <h3 class="text-white" style="padding: 15px; margin-right: auto; padding-bottom: 0; margin-top:auto;">
+                                    @x.title <span style="font-size:x-large">Ürünleri</span>
+                                </h3>
+                                <div style="padding: 15px; margin-right: auto; padding-bottom: 0; padding-top: 0; margin-bottom:30px; ">
+                                    <a class="btn btn-danger " style="padding-left:30px;padding-right:30px;border-radius:30px;" href="@(x.id == 2 ? "/Home/Products/15" : "/Home/Hardware")">İncele</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            }
+        </div>
+    </div>
+</div>
+}
+else 
+{
+<div class="container-fluid py-5" style="padding-left:250px;padding-right:250px;">
+
+    <div>
+        @*<div class="text-center mb-3 pb-3">
+                <h3 class="text-primary text-uppercase" style="letter-spacing: 5px;">ÜRÜNLER</h3>
+                <h1></h1>
+            </div>*@
+        <div>
+            @foreach (var x in Model.indexProductList)
+            {
+
+                <div class="mb-4" style="border-radius:40px">
+                    <div class="destination-item position-relative overflow-hidden mb-2" style="border-radius:40px;">
+                        <img class="img-fluid" src="~/Images/Category/@x.image" alt="" style="border-radius:40px;">
+                        <div class="destination-overlay text-white text-decoration-none" href="" style="top:15px;bottom:15px;left:15px;right:15px; border-radius:40px;">
+                            <h3 class="text-white" style="padding: 15px; margin-right: auto; padding-bottom: 0; margin-top:auto;">
+                                @x.title <span style="font-size:x-large">Ürünleri</span>
+                            </h3>
+                            <div style="padding: 15px; margin-right: auto; padding-bottom: 0; padding-top: 0; margin-bottom:30px; ">
+                                <a class="btn btn-danger " style="padding-left:30px;padding-right:30px;border-radius:30px;" href="@(x.id == 2 ? "/Home/Products/15" : "/Home/Hardware")">İncele</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+}
+<!-- Products End -->
+<!-- Who Are We Start-->
+<div class="container-fluid py-5">
+    <div>
+        <div class="row">
+            <div class="col-lg-6" @*style="min-height: 500px;"*@>
+                <div class="position-relative h-100">
+                    <img class="img-fluid w-100 h-100" src="~/Images/WhoAreWe/@Model.IndexWhoAreWe.image" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-6 pt-5 pb-lg-5">
+                <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
+                    <h2 class="text-primary text-uppercase" style="letter-spacing: 5px;">@Model.IndexWhoAreWe.title</h2>
+                    <h3 class="mb-3">@Model.IndexWhoAreWe.shortText</h3>
+                    <p>
+                        @Model.IndexWhoAreWe.text
+                    </p>
+                    <a href="/Home/Contact" class="btn btn-danger mt-1">Bizimle İletişime Geçin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Who Are We End-->
+<!-- News Start -->
+<div class="container-fluid py-5">
+
+    <div class="text-center mb-3 pb-3">
+        <h3 class="text-primary text-uppercase" style="letter-spacing: 5px;">HABERLER</h3>
+        <h1></h1>
+    </div>
+    <div class="owl-carousel testimonial-carousel">
+        @foreach (var x in Model.News)
+        {
+            <div class="text-center pb-4" style="">
+                <img class="img-fluid mx-auto" style="height:230px" src="~/Images/News/@Model.NewsImage.Find(img=>x.id==img.newsId).image">
+                <div class="blog-date">
+                    <h6 class="font-weight-bold mb-n1">@x.date.Value.ToString("dd")</h6>
+                    <small class="text-white text-uppercase">@x.date.Value.ToString("MMMM")</small>
+                </div>
+                <div class="testimonial-text bg-white p-4 mt-n5">
+                    <p class="mt-5">
+                        @(x.text.Length>30 ? x.text.Substring(0,30) : x.text)...
+                    </p>
+                    <a class="btn btn-outline-danger" href="/Home/NewsDetail/@x.id">Devamını Oku</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<!-- News End -->
+<!-- Service Start -->
+<div class="container-fluid py-5">
+    <div>
+        <div class="text-center mb-3 pb-3">
+            <h3 class="text-primary text-uppercase" style="letter-spacing: 5px;">Sektörel Çözümler</h3>
+            <h5>(Otomatik Tanımlama / Veri Toplama) teknolojilerinin en yaygın uygulamaları olan Barkod çözümleri alanında fark yaratan ürün ve projeler sunmaktayız.</h5>
+        </div>
+        <div class="owl-carousel testimonial-carousel">
+            @foreach (var x in Model.SectorList)
+            {
+                <div class="text-center pb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="~/Images/Sector/@x.image" style="height:250px;" alt="">
+                        <div class="destination-overlay text-white text-decoration-none" href="">
+                            <h3 class="text-white">
+                                @x.title <span style="font-size:x-large"></span>
+                            </h3>
+                            <p style="font-size:small; padding-left:10px;padding-right:10px;">@x.shortText</p>
+                            <div class="text-white">
+                                <a class="btn btn-danger" href="/Home/ServiceDetail/@x.id">İncele></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+</div>
+<!-- Service End -->
+<!-- Partnerts Start -->
+<div class="container-fluid py-5">
+    <div>
+        <div class="text-center mb-3 pb-3">
+            <h3 class="text-primary text-uppercase" style="letter-spacing: 5px;">Çözüm Ortaklarımız</h3>
+        </div>
+        <div class="owl-carousel testimonial-carousel">
+            @foreach (var x in Model.SolutionPartnersList)
+            {
+                <div class="text-center pb-4">
+                    <img class="img-fluid mx-auto" src="~/Images/SolutionPartners/@x.image" style="width: 300px; height: 100px;">
+                    <div class="testimonial-text bg-white p-4 mt-n5">
+                        <p class="mt-5">
+                            @x.slogan
+                        </p>
+                        <h5 class="text-truncate">@x.name</h5>
+                        <span></span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Partnerts End -->
+<!-- Registration Start -->
+<div class="container-fluid bg-registration py-5" style="background-image:url(/Images/IndexContactUs/@Model.IndexContactUs.image);">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-5 mb-lg-0">
+                <div class="mb-4">
+                    <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">@Model.IndexContactUs.name</h6>
+                    <h1 class="text-white">@Model.IndexContactUs.slogan</h1>
+                </div>
+                <p class="text-white">
+                    @Model.IndexContactUs.text
+                </p>
+                @*<ul class="list-inline text-white m-0">
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Yerel Marka</li>
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Ürün Ve Hizmet</li>
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Tedarikçi Ağı</li>
+                    </ul>*@
+            </div>
+            <div class="col-lg-5">
+                <div class="card border-0">
+                    <div class="card-header bg-primary text-center p-4">
+                        <h2 class="text-white m-0">Bize Ulaşın!</h2>
+                    </div>
+                    <div class="card-body rounded-bottom bg-white p-5">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control p-4" placeholder="Ad Soyad" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control p-4" placeholder="Telefon" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control p-4" placeholder="E-Mail" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control p-4" placeholder="Mesajınız" required="required"></textarea>
+                            </div>
+                            @*<div class="form-group">
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Select a destination</option>
+                                        <option value="1">destination 1</option>
+                                        <option value="2">destination 1</option>
+                                        <option value="3">destination 1</option>
+                                    </select>
+                                </div>*@
+                            <div>
+                                <button class="btn btn-danger btn-block py-3" type="submit">Gönder</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Registration End -->

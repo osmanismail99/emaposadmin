@@ -1,0 +1,52 @@
+﻿@using EmaPosAdminProject.Customs
+@using EmaPosAdminProject.Models.Entity
+@model about
+@{
+    ViewBag.Title = "HakkimizdaGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Hakkımızda Sayfasını Düzenleme</h6>
+        <a class="btn btn-primary" href="/Kurumsal/HakkimizdaListe">< Geri Dön</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            @using (Html.BeginForm("HakkimizdaGuncelle", "Kurumsal", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.TextBoxFor(x => x.id, new { @class = "form-control", @readonly = "readonly", type = "hidden" })
+                <br />
+                <p class="text-dark">Metin</p>
+                @Html.TextAreaFor(x => x.text, 10, 1, new { @class = "form-control" })
+                <br />
+                <p class="text-dark">Mevcut Görsel</p>
+                <img src="~/Images/Kurumsal/@Model.image" style="width: 400px; height: 200px;" />
+                <br />
+                <br />
+                <p class="text-dark">Yeni Görsel</p>
+                @Html.TextBoxFor(x => x.image, new { @class = "form-control", type = "file", accept = ".jpg,.png,.gif,.JPEG,.jpeg", name = "image", onchange = "PreviewImage();", id = "uploadImage" })
+                <br />
+                <img id="uploadPreview" style="width: 400px; height: 200px;" />
+                <script type="text/javascript">
+
+                    function PreviewImage() {
+                        var oFReader = new FileReader();
+                        oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+                        oFReader.onload = function (oFREvent) {
+                            document.getElementById("uploadPreview").src = oFREvent.target.result;
+                        };
+                    };
+
+                </script>
+                <br />
+                <br />
+                @Html.Submit("Güncelle", new { @class = "btn btn-success" })
+                <a class="btn btn-primary" href="/Kurumsal/HakkimizdaListe">< Geri Dön</a>
+            }
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,53 @@
+﻿@using EmaPosAdminProject.Customs
+@using EmaPosAdminProject.Models.Entity
+@model category
+@{
+    ViewBag.Title = "YeniKategori";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Yeni Kategori Ekleme</h6>
+        <a class="btn btn-primary" href="/Kategori/KategoriListesi">< Geri Dön</a>
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            @using (Html.BeginForm("YeniKategori", "Kategori", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <p class="text-dark">Sıra Numarası</p>
+                @*@Html.TextBoxFor(x => x.orderNumber, new { @class = "form-control", required = "true", type = "number" })*@
+                <input type="number" class="form-control" name="orderNumber" id="ordeNumber" value="@ViewBag.orderNum" required min="1" readonly />
+                <br />
+                <p class="text-dark">Kategori Adı</p>
+                @Html.TextBoxFor(x => x.name, new { @class = "form-control", required = "true" })
+                <br />
+                <p class="text-dark">Görsel</p>
+                @Html.TextBoxFor(x => x.image, new { @class = "form-control", type = "file", accept = ".jpg,.png,.gif,.JPEG,.jpeg", name = "image", required = "true", onchange = "PreviewImage();", id = "uploadImage" })
+                <br />
+
+                <img id="uploadPreview" style="width: 200px; height: 200px;" />
+                <script type="text/javascript">
+
+                    function PreviewImage() {
+                        var oFReader = new FileReader();
+                        oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+                        oFReader.onload = function (oFREvent) {
+                            document.getElementById("uploadPreview").src = oFREvent.target.result;
+                        };
+                    };
+
+                </script>
+                <br />
+                <br />
+                @Html.Submit("Ekle", new { @class = "btn btn-success" })
+                <a class="btn btn-primary" href="/Kategori/KategoriListesi">< Geri Dön</a>
+
+            }
+
+        </div>
+    </div>
+</div>
+

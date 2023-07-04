@@ -1,0 +1,64 @@
+﻿@using EmaPosAdminProject.Models.Entity
+@model List<about>
+@{
+    ViewBag.Title = "HakkimizdaListe";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<head>
+    <!-- Custom styles for this page -->
+    <link href="~/web_admin/startbootstrap-sb-admin-2-gh-pages/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+</head>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Hakkımızda Sayfası</h6>
+
+            @*@Html.ActionLink("Yeni Slayt", "YeniSlayt", "Admin", new { }, new { @class = "btn btn-primary py-1" })*@
+
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Metin</th>
+                            <th>Görsel</th>
+                            <th>Düzenle</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Metin</th>
+                            <th>Görsel</th>
+                            <th>Düzenle</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var x in Model)
+                        {
+                            <tr>
+                                <td>@x.text</td>
+                                <td><img width="75" src="~/Images/Kurumsal/@x.image" /></td>
+                                <td>@Html.ActionLink("Düzenle", "HakkimizdaGetir", "Kurumsal", new { x.id }, new { @class = "btn btn-warning" })</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

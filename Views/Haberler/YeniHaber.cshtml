@@ -1,0 +1,59 @@
+﻿@using EmaPosAdminProject.Customs
+@model EmaPosAdminProject.ViewModel.NewsImages
+@{
+    ViewBag.Title = "YeniHaber";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Yeni Haber Ekleme</h6>
+        <a class="btn btn-primary" href="/Haberler/HaberlerListesi">< Geri Dön</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            @using (Html.BeginForm("YeniHaber", "Haberler", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <p class="text-dark">Haber Adı</p>
+                @Html.TextBoxFor(x => Model.News.title, new { @class = "form-control", required = "true" })
+                <br />
+                <p class="text-dark">Haber Detayı</p>
+                @Html.TextAreaFor(x => x.News.text, 5, 1, new { @class = "form-control" })
+                <br />
+                <p class="text-dark">Görsel</p>
+                @Html.TextBoxFor(x => Model.NewsImage.image, new { @class = "form-control", type = "file", accept = ".jpg,.png,.gif,.JPEG,.jpeg", name = "image", required = "true", onchange = "previewMultiple(event)", id = "adicionafoto" })
+                <br />
+                <div id="galeria"></div>
+                <br />
+                @Html.Submit("Ekle", new { @class = "btn btn-success" })
+                <a class="btn btn-primary" href="/Haberler/HaberlerListesi">< Geri Dön</a>
+            }
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function previewMultiple(event) {
+        var saida = document.getElementById("adicionafoto");
+        var quantos = saida.files.length;
+        for (i = 0; i < quantos; i++) {
+            var urls = URL.createObjectURL(event.target.files[i]);
+            document.getElementById("galeria").innerHTML += '<img src="' + urls + '">';
+        }
+    }
+</script>
+<style>
+    #galeria {
+        display: flex;
+    }
+
+        #galeria img {
+            width: 85px;
+            height: 85px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+            opacity: 85%;
+        }
+</style>
+

@@ -1,0 +1,72 @@
+﻿@model EmaPosAdminProject.ViewModel.ProductImages
+@{
+    ViewBag.Title = "UrunlerListesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<head>
+    <!-- Custom styles for this page -->
+    <link href="~/web_admin/startbootstrap-sb-admin-2-gh-pages/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+</head>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Ürünler</h6>
+            <br />
+            @Html.ActionLink("Yeni Ürün Ekle +", "YeniUrun", "Urun", new { }, new { @class = "btn btn-primary py-1" })
+
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Ürün Adı</th>
+                            <th>Kategori</th>
+                            @*<th>Ürün Detayı</th>*@
+                            <th>Görseller</th>
+                            <th>Sil</th>
+                            <th>Düzenle</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Ürün Adı</th>
+                            <th>Kategori</th>
+                            @*<th>Ürün Detayı</th>*@
+                            <th>Görseller</th>
+                            <th>Sil</th>
+                            <th>Düzenle</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var x in Model.ProductList)
+                        {
+                            <tr>
+                                <td>@x.title</td>
+                                <td>@x.category.name</td>
+                                @*<td>@Html.Raw(x.text.Length > 20?x.text.Substring(0, 20):x.text)</td>*@
+                                @*<td><img width="75" src="~/Images/Slider/@x.image" /></td>*@
+                                <th>@Html.ActionLink("Görseller", "GorsellerListesi", "Urun", new { x.id }, new { @class = "btn btn-primary" })</th>
+                                <td>@Html.ActionLink("Sil", "UrunSil", "Urun", new { x.id }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek istediğinizden emin misiniz?');" }) </td>
+                                <td>@Html.ActionLink("Düzenle", "UrunGetir", "Urun", new { x.id }, new { @class = "btn btn-warning" })</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

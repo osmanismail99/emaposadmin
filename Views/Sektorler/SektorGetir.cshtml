@@ -1,0 +1,61 @@
+﻿@using EmaPosAdminProject.Customs
+@model EmaPosAdminProject.ViewModel.SectorCategories
+@{
+    ViewBag.Title = "SektorGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@Model.Sector.title Sektörünü Düzenleme</h6>
+        <a class="btn btn-primary" href="/Sektorler/SektorlerListesi">< Geri Dön</a>
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            @using (Html.BeginForm("SektorGuncelle", "Sektorler", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.TextBoxFor(x => x.Sector.id, new { @class = "form-control", @readonly = "readonly", type = "hidden" })
+                <p class="text-dark">Sıra Numarası</p>
+                @Html.TextBoxFor(x => Model.Sector.orderNumber, new { @class = "form-control", required = "true", type = "number", min = "1" })
+                <br />
+                <p class="text-dark">Sektör Adı</p>
+                @Html.TextBoxFor(x => Model.Sector.title, new { @class = "form-control", required = "true" })
+                <br />
+                <p class="text-dark">Anasayfa İçin Kısa Açıklama</p>
+                @Html.TextAreaFor(x => Model.Sector.shortText, 2, 1, new { @class = "form-control" })
+                <br />
+                <p class="text-dark">Detaylı Açıklama</p>
+                @Html.TextAreaFor(x => Model.Sector.text, 5, 1, new { @class = "form-control" })
+                <br />
+                <p class="text-dark">Mevcut Görsel</p>
+                <img src="~/Images/Sector/@Model.Sector.image" style="width: 400px; height: 200px;" />
+                <br />
+                <br />
+                <p class="text-dark">Yeni Görsel</p>
+                @Html.TextBoxFor(x => Model.Sector.image, new { @class = "form-control", type = "file", accept = ".jpg,.png,.gif,.JPEG,.jpeg", name = "image", onchange = "PreviewImage();", id = "uploadImage" })
+                <br />
+                <img id="uploadPreview" style="width: 400px; height: 200px;" />
+                <script type="text/javascript">
+
+                    function PreviewImage() {
+                        var oFReader = new FileReader();
+                        oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+                        oFReader.onload = function (oFREvent) {
+                            document.getElementById("uploadPreview").src = oFREvent.target.result;
+                        };
+                    };
+
+                </script>
+                <br />
+                <br />
+                @Html.Submit("Güncelle", new { @class = "btn btn-success" })
+                <a class="btn btn-primary" href="/Sektorler/SektorlerListesi">< Geri Dön</a>
+
+            }
+
+        </div>
+    </div>
+</div>
+

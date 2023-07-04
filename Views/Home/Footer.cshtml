@@ -1,0 +1,110 @@
+﻿@model EmaPosAdminProject.ViewModel.Home.Navbar
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5">
+    <div class="row pt-5">
+        <div class="col-lg-3 col-md-6 mb-5">
+            <a href="" class="navbar-brand">
+                <a href="/Home/Index"><img width="70px" height="62px" src="~/Images/logo-w.png" alt="#" /></a>
+            </a>
+            @*<p>Sed ipsum clita tempor ipsum ipsum amet sit ipsum lorem amet labore rebum lorem ipsum dolor. No sed vero lorem dolor dolor</p>*@
+            <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">BİZİ TAKİP EDİN</h6>
+            <div class="d-flex justify-content-start">
+                <a class="btn btn-outline-danger btn-square mr-2" target="_blank" href="@Model.Contact.facebook"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-danger btn-square mr-2" target="_blank" href="https://www.google.com/maps/place/emapos+barkod+yaz%C4%B1l%C4%B1m+otomasyon+sistemleri/40.7646833,29.9294064,17z/data=!3m1!4b1!4m6!3m5!1s0x14cb45e5178e4dab:0xf55a2549ff624350!8m2!3d40.7646833!4d29.9294064!16s%2Fg%2F11hf418h96"><i class="fab fa-google"></i></a>
+                <a class="btn btn-outline-danger btn-square" target="_blank" href="@Model.Contact.instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">EMA BARKOD</h5>
+            <div class="d-flex flex-column justify-content-start">
+                <a class="text-white-50 mb-2" href="/Home/About"><i class="fa fa-angle-right mr-2"></i>Hakkımızda</a>
+                <a class="text-white-50 mb-2" href="/Home/Mission/"><i class="fa fa-angle-right mr-2"></i>Misyonumuz</a>
+                <a class="text-white-50 mb-2" href="/Home/Vission/"><i class="fa fa-angle-right mr-2"></i>Vizyonumuz</a>
+                <a class="text-white-50 mb-2" href="/Home/News"><i class="fa fa-angle-right mr-2"></i>Haberler</a>
+                <a class="text-white-50 mb-2" href="/Home/References"><i class="fa fa-angle-right mr-2"></i>Referanslar</a>
+                <a class="text-white-50 mb-2" href="/Home/Products/1"><i class="fa fa-angle-right mr-2"></i>Ürünler</a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Ürünler</h5>
+            <div class="d-flex flex-column justify-content-start">
+                @foreach (var x in Model.CategoryList)
+                {
+                    <a class="text-white-50 mb-2" href="/Home/Products/@x.id"><i class="fa fa-angle-right mr-2"></i>@x.name</a>
+                }
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">İLETİŞİM</h5>
+            <a class="text-danger" target="_blank" href="https://www.google.com/maps/place/emapos+barkod+yaz%C4%B1l%C4%B1m+otomasyon+sistemleri/40.7646833,29.9294064,17z/data=!3m1!4b1!4m6!3m5!1s0x14cb45e5178e4dab:0xf55a2549ff624350!8m2!3d40.7646833!4d29.9294064!16s%2Fg%2F11hf418h96">
+                <p><i class="fa fa-map-marker-alt mr-2"></i>@Model.Contact.address</p>
+            </a>
+            <a class="text-danger" href="tel:@Model.Contact.phone1">
+                <p><i class="fa fa-phone-alt mr-2"></i>@Model.Contact.phone1</p>
+            </a>
+            <a class="text-danger" href="tel:@Model.Contact.phone2">
+                <p><i class="fa fa-phone-alt mr-2"></i>@Model.Contact.phone2</p>
+            </a>
+            <a class="text-danger" href="mailto:@Model.Contact.email">
+                <p><i class="fa fa-envelope mr-2"></i>@Model.Contact.email</p>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
+    <div class="row">
+        <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+            <p class="m-0 text-white-50">
+                @*Designed by <a href="https://htmlcodex.com">HTML Codex</a>*@
+            </p>
+        </div>
+        <div class="col-lg-6 text-center text-md-right">
+            <p class="m-0 text-white-50">
+                EmaPos @DateTime.Now.ToString("yyyy")&copy; .Coded by <a href="https://dinosoft.com.tr/" class="text-danger" target="_blank">Dinosoft</a>. Tüm Hakları Saklıdır.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer End -->
+<!-- Back to Top -->
+
+<a href="#" class="btn btn-lg btn-danger btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+<!--WhatsApp Start-->
+<style>
+    .ffloat {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        left: 40px;
+        background-color: #7AB730;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 100;
+    }
+
+    .myy-float {
+        margin-top: 16px;
+    }
+
+    .ffa {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+</style>
+
+
+
+<a href="https://api.whatsapp.com/send?phone=9@(Model.Contact.whatsappNumber)" target="_blank" class="ffloat">
+    <i class="fab fa-whatsapp myy-float"></i>
+</a>
+<!--WhatsApp End-->

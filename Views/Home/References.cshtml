@@ -1,0 +1,172 @@
+﻿@using EmaPosAdminProject.Models.Entity
+@model List<reference>
+@{
+    ViewBag.Title = "References";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Header Start -->
+<div class="container-fluid page-header" style="height: 250px;">
+    <div class="container" style="height: 250px;">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 250px;">
+            <h3 class="display-4 text-white text-uppercase">REFERANSLAR</h3>
+            <div class="d-inline-flex text-white">
+                <p class="m-0 text-uppercase"><a class="text-white" href="/Home/Index">Ana Sayfa</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase">REFERANSLAR</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+
+<!-- Team Start -->
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <div class="text-center mb-3 pb-3">
+            @*<h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">REFEREANSLAR</h6>*@
+            <h1></h1>
+        </div>
+        <div class="row" >
+            @foreach (var x in Model)
+            {
+            <div class="col-lg-4 col-md-4 col-sm-6 pb-2">
+                <div class="team-item bg-white mb-4">
+                    <div class="team-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="~/Images/References/@x.image" style="height:350px;" alt="">
+                        <div class="team-social">
+                            <a class="btn btn-outline-danger btn-square" href="@x.facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-danger btn-square" href="@x.instagram"><i class="fab fa-instagram"></i></a>
+                            @*<a class="btn btn-outline-danger btn-square" href="@x.website"><i class="fab fa-globe"></i></a>*@
+                        </div>
+                    </div>
+                    <div class="text-center py-4">
+                        <h5 class="text-truncate">@x.title</h5>
+                        <p class="m-0"></p>
+                    </div>
+                </div>
+            </div>
+            }
+            @*<div class="col-lg-4 col-md-4 col-sm-6 pb-2">
+                <div class="team-item bg-white mb-4">
+                    <div class="team-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="~/image/referans2.jpg" alt="">
+                        <div class="team-social">
+                            
+                            <a class="btn btn-outline-danger btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-danger btn-square" href=""><i class="fab fa-instagram"></i></a>
+                            
+                        </div>
+                    </div>
+                    <div class="text-center py-4">
+                        <h5 class="text-truncate">ROUTE 41</h5>
+                        <p class="m-0"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 pb-2">
+                <div class="team-item bg-white mb-4">
+                    <div class="team-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="~/image/referans3.jpg" alt="">
+                        <div class="team-social">
+                            
+                            <a class="btn btn-outline-danger btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-danger btn-square" href=""><i class="fab fa-instagram"></i></a>
+                            
+                        </div>
+                    </div>
+                    <div class="text-center py-4">
+                        <h5 class="text-truncate">STAR</h5>
+                        <p class="m-0"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 pb-2">
+                <div class="team-item bg-white mb-4">
+                    <div class="team-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="~/image/referans4.jpg" alt="">
+                        <div class="team-social">
+                            
+                            <a class="btn btn-outline-danger btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-danger btn-square" href=""><i class="fab fa-instagram"></i></a>
+                            
+                        </div>
+                    </div>
+                    <div class="text-center py-4">
+                        <h5 class="text-truncate">FATİH</h5>
+                        <p class="m-0"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 pb-2">
+                <div class="team-item bg-white mb-4">
+                    <div class="team-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="~/image/referans5.jpg" alt="">
+                        <div class="team-social">
+                            
+                            <a class="btn btn-outline-danger btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-danger btn-square" href=""><i class="fab fa-instagram"></i></a>
+                            
+                        </div>
+                    </div>
+                    <div class="text-center py-4">
+                        <h5 class="text-truncate">Cap&Day</h5>
+                        <p class="m-0"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 pb-2">
+                <div class="team-item bg-white mb-4">
+                    <div class="team-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="~/image/referans6.jpg" alt="">
+                        <div class="team-social">
+                            
+                            <a class="btn btn-outline-danger btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-danger btn-square" href=""><i class="fab fa-instagram"></i></a>
+                            
+                        </div>
+                    </div>
+                    <div class="text-center py-4">
+                        <h5 class="text-truncate">SARIGÜL</h5>
+                        <p class="m-0"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 pb-2">
+                <div class="team-item bg-white mb-4">
+                    <div class="team-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="~/image/referans7.jpg" alt="">
+                        <div class="team-social">
+                            
+                            <a class="btn btn-outline-danger btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-danger btn-square" href=""><i class="fab fa-instagram"></i></a>
+                            
+                        </div>
+                    </div>
+                    <div class="text-center py-4">
+                        <h5 class="text-truncate">MERTAY</h5>
+                        <p class="m-0"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 pb-2">
+                <div class="team-item bg-white mb-4">
+                    <div class="team-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="~/image/referans8.jpg" alt="">
+                        <div class="team-social">
+                            
+                            <a class="btn btn-outline-danger btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-danger btn-square" href=""><i class="fab fa-instagram"></i></a>
+                            <
+                        </div>
+                    </div>
+                    <div class="text-center py-4">
+                        <h5 class="text-truncate">TUTKU</h5>
+                        <p class="m-0"></p>
+                    </div>
+                </div>
+            </div>*@
+        </div>
+    </div>
+</div>
+<!-- Team End -->

@@ -1,0 +1,194 @@
+﻿@model EmaPosAdminProject.ViewModel.SectorCategories
+@{
+    ViewBag.Title = "ServiceDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Header Start -->
+<div class="container-fluid page-header" style="height: 250px;">
+    <div class="container" style="height: 250px;">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 250px;">
+            <h3 class="display-4 text-white text-uppercase">@Model.Sector.title</h3>
+            <div class="d-inline-flex text-white">
+                <p class="m-0 text-uppercase"><a class="text-white" href="/Home/Index">Ana Sayfa</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase"><a class="text-white" href="/Home/Hardware">@Model.Sector.title</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<!--Service Detail Start-->
+<div class="container-fluid py-5">
+    <div>
+        <div class="row">
+            <div class="col-lg-6" style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100" src="~/Images/Sector/@Model.Sector.image" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-6 pt-5 pb-lg-5">
+                <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
+                    <h2 class="text-primary text-uppercase" style="letter-spacing: 5px;">@Model.Sector.title</h2>
+
+                    <p>
+                        @Model.Sector.text
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Service Detail End-->
+<!-- Service Start -->
+@*<div class="container-fluid py-1">
+    <div class="container pt-5 pb-3">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <i class="fa fa-2x fa-check-circle mx-auto mb-4"></i>
+                    <h5 class="mb-2">Stok Takibi</h5>
+                    <p class="m-0">Barkod otomasyon sistemi sayesinde ürünlerin stokları ve miktarları kolayca takip edilebilir. Bu sayede ürünlerin stoklarının sürekli olarak güncel tutulması ve eksik olan ürünlerin zamanında yenilenmesi sağlanır.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <i class="fa fa-2x fa-check-circle mx-auto mb-4"></i>
+                    <h5 class="mb-2">Fiyat Belirlenmesi</h5>
+                    <p class="m-0">Sistem sayesinde ürünlerin fiyatları otomatik olarak belirlenebilir ve güncellenebilir. Bu sayede fiyatların manuel olarak belirlenmesi yerine, sistem tarafından otomatik olarak belirlenmesi sağlanır.</p>
+                    <br />
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <i class="fa fa-2x fa-check-circle mx-auto mb-4"></i>
+                    <h5 class="mb-2">Satış Hızı</h5>
+                    <p class="m-0">Barkod tarama teknolojisi sayesinde satış işlemleri hızlandırılır. Ürünlerin barkodları taratılır ve işlemler gerçekleştirilir. Bu sayede satış işlemleri.</p>
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+<!-- Service End -->
+<!-- Service Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="text-center mb-3 pb-3">
+            <h3 class="text-primary text-uppercase" style="letter-spacing: 5px;">TEKLİF EDİLEN ÜRÜNLER</h3>
+        </div>
+        <div class="owl-carousel testimonial-carousel">
+            @foreach (var x in Model.SectorsCategoryList)
+            {
+                <div class="text-center pb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="~/Images/Category/@x.category.image" style="height:300px;" alt="">
+                        <div class="destination-overlay text-white text-decoration-none" href="">
+                            <h3 class="text-white">
+                                @x.category.name <span style="font-size:x-large"></span>
+                            </h3>
+                            <div class="text-white">
+                                <a class="btn btn-danger " href="/Home/ProductDeatail">İncele></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            @*<div class="text-center pb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="~/image/urun2.jpg" style="height:300px;" alt="">
+                        <div class="destination-overlay text-white text-decoration-none" href="">
+                            <h3 class="text-white">
+                                Fiş Yazıcı
+                                <span style="font-size:x-large"></span>
+                            </h3>
+                            <div class="text-white">
+                                <a class="btn btn-danger " href="/Home/Software">İncele></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center pb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="~/image/urun3.jpg" style="height:300px;" alt="">
+                        <div class="destination-overlay text-white text-decoration-none" href="">
+                            <h3 class="text-white">
+                                Pos Terazi <span style="font-size:x-large"></span>
+                            </h3>
+                            <div class="text-white">
+                                <a class="btn btn-danger " href="/Home/Hardware">İncele></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center pb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="~/image/urun6.jpg" style="height:300px;" alt="">
+                        <div class="destination-overlay text-white text-decoration-none" href="">
+                            <h3 class="text-white">
+                                Para Çekmeceleri <span style="font-size:x-large"></span>
+                            </h3>
+                            <div class="text-white">
+                                <a class="btn btn-danger " href="/Home/Hardware">İncele></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+    </div>
+</div>
+<!-- Service End -->
+<!-- Contact Start -->
+<div class="container-fluid " style="padding-bottom:40px;">
+    <div class="container ">
+        <div class="text-center mb-3 pb-3">
+            <h3 class="text-primary text-uppercase" style="letter-spacing: 5px;">HIZLI TEKLİF AL!</h3>
+            <h1></h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="contact-form bg-white" style="padding: 30px;">
+                    <div id="success"></div>
+                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                        <div class="form-row">
+                            <div class="control-group col-sm-6">
+                                <input type="text" class="form-control p-4" id="name" placeholder="Ad Soyad"
+                                       required="required" data-validation-required-message="Please enter your name" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-6">
+                                <input type="email" class="form-control p-4" id="email" placeholder="E-Mail"
+                                       required="required" data-validation-required-message="Please enter your email" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="control-group col-sm-6">
+                                <input type="text" class="form-control p-4" id="name" placeholder="Firma Ünvanı"
+                                       required="required" data-validation-required-message="Please enter your name" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-6">
+                                <input type="text" class="form-control p-4" id="email" placeholder="Telefon"
+                                       required="required" data-validation-required-message="Please enter your email" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <textarea class="form-control py-3 px-4" rows="5" id="message" placeholder="Hangi ürün veya çözümüz ile ilgileniyorsunuz?"
+                                      required="required"
+                                      data-validation-required-message="Please enter your message"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-danger py-3 px-4" type="submit" id="sendMessageButton">Teklif Al!</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->

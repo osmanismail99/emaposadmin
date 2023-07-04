@@ -1,0 +1,105 @@
+﻿@using EmaPosAdminProject.Models.Entity
+@model contact
+@{
+    ViewBag.Title = "Contact";
+}
+
+<!-- Header Start -->
+<div class="container-fluid page-header" style = "height: 250px;">
+    <div class="container" style = "height: 250px;">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 250px;">
+            <h3 class="display-4 text-white text-uppercase">İLETİŞİM</h3>
+            <div class="d-inline-flex text-white">
+                <p class="m-0 text-uppercase"><a class="text-white" href="/Home/Index">Ana Sayfa</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase">İLETİŞİM</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<!--Map End-->
+<div class="map_main py-2">
+    <div class="map-responsive">
+        <iframe src="@Model.googleMap" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>
+<!---Map End-->
+<!-- Service Start -->
+<div class="container-fluid py-1">
+    <div class="container pt-5 pb-3">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <a href="https://www.google.com/maps/place/emapos+barkod+yaz%C4%B1l%C4%B1m+otomasyon+sistemleri/40.7646833,29.9294064,17z/data=!3m1!4b1!4m6!3m5!1s0x14cb45e5178e4dab:0xf55a2549ff624350!8m2!3d40.7646833!4d29.9294064!16s%2Fg%2F11hf418h96"><i class="fa fa-2x fa-route mx-auto mb-4"></i></a>
+                    <h5 class="mb-2">Adres</h5>
+                    <p class="m-0">@Model.address</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <a href="tel:@Model.phone1"><i class="fa fa-2x fa-phone mx-auto mb-4"></i></a>
+                    <h5 class="mb-2">Telefon</h5>
+                    <p class="m-0">@Model.phone1</p>
+                    <p class="m-0">@Model.phone2</p>
+                    <br />
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                    <a href="mailto:@Model.email"><i class="fa fa-2x fa-envelope mx-auto mb-4"></i></a>
+                    <h5 class="mb-2">E-Mail</h5>
+                    <p class="m-0">@Model.email</p>
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Service End -->
+<!-- Contact Start -->
+<div class="container-fluid " style="padding-bottom:40px;">
+    <div class="container ">
+        <div class="text-center mb-3 pb-3">
+            <h3 class="text-primary text-uppercase" style="letter-spacing: 5px;">BİZE ULAŞIN!</h3>
+            <h1></h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="contact-form bg-white" style="padding: 30px;">
+                    <div id="success"></div>
+                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                        <div class="form-row">
+                            <div class="control-group col-sm-6">
+                                <input type="text" class="form-control p-4" id="name" placeholder="Ad Soyad"
+                                       required="required" data-validation-required-message="Please enter your name" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-6">
+                                <input type="email" class="form-control p-4" id="email" placeholder="E-Mail"
+                                       required="required" data-validation-required-message="Please enter your email" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="subject" placeholder="Telefon"
+                                   required="required" data-validation-required-message="Please enter a subject" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <textarea class="form-control py-3 px-4" rows="5" id="message" placeholder="Mesaj"
+                                      required="required"
+                                      data-validation-required-message="Please enter your message"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary py-3 px-4" type="submit" id="sendMessageButton">Gönder</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->

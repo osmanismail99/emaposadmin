@@ -1,0 +1,60 @@
+﻿@using EmaPosAdminProject.Models.Entity
+@model List<indexCarousel>
+@{
+    ViewBag.Title = "SliderListe";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<head>
+    <!-- Custom styles for this page -->
+    <link href="~/web_admin/startbootstrap-sb-admin-2-gh-pages/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+</head>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Anasayfa Slider</h6>
+            <br />
+            @Html.ActionLink("Anasayfaya yeni Slider ekle +", "YeniSlider", "Anasayfa", new { }, new { @class = "btn btn-primary py-1" })
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Sıra Numarası</th>
+                            <th>Başlık</th>
+                            <th>Görsel</th>
+                            <th>Sil</th>
+                            <th>Güncelle</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Sıra Numarası</th>
+                            <th>Başlık</th>
+                            <th>Görsel</th>
+                            <th>Sil</th>
+                            <th>Güncelle</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var x in Model)
+                        {
+                            <tr>
+                                <td>@x.orderNumber</td>
+                                <td>@x.title</td>
+                                <td><img width="75" src="~/Images/Slider/@x.image" /></td>
+                                <td>@Html.ActionLink("Sil", "SliderSil", "Anasayfa", new { x.id }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek istediğinizden emin misiniz?');" }) </td>
+                                <td>@Html.ActionLink("Düzenle", "SliderGetir", "Anasayfa", new { x.id }, new { @class = "btn btn-warning" })</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->

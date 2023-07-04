@@ -1,0 +1,82 @@
+﻿@using EmaPosAdminProject.Models.Entity
+@model List<contact>
+@{
+    ViewBag.Title = "IletisimListe";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<head>
+    <!-- Custom styles for this page -->
+    <link href="~/web_admin/startbootstrap-sb-admin-2-gh-pages/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+</head>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">İletişim Sayfası</h6>
+
+            @*@Html.ActionLink("Yeni Slayt", "YeniSlayt", "Admin", new { }, new { @class = "btn btn-primary py-1" })*@
+
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Düzenle</th>
+                            <th>Google Konum linki</th>
+                            <th>Adres</th>
+                            <th>Telefon Numarası 1</th>
+                            <th>Telefon Numarası 2</th>
+                            <th>WhatsApp Numarası </th>
+                            <th>Email</th>
+                            <th>Facebook linki</th>
+                            <th>Insatgram linki</th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Düzenle</th>
+                            <th>Google Konum linki</th>
+                            <th>Adres</th>
+                            <th>Telefon Numarası 1</th>
+                            <th>Telefon Numarası 2</th>
+                            <th>WhatsApp Numarası </th>
+                            <th>Email</th>
+                            <th>Facebook linki</th>
+                            <th>Insatgram linki</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var x in Model)
+                        {
+                            <tr>
+                                <td>@Html.ActionLink("Düzenle", "IletisimGetir", "Iletisim", new { x.id }, new { @class = "btn btn-warning" })</td>
+                                <td>@x.googleMap.Substring(0, 20)</td>
+                                <td>@x.address</td>
+                                <td>@x.phone1</td>
+                                <td>@x.phone2</td>
+                                <td>@x.whatsappNumber</td>
+                                <td>@x.email</td>
+                                <td>@x.facebook</td>
+                                <td>@x.instagram</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
